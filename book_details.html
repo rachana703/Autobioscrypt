@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Site</title>
+<script src="./node_modules/web3/dist/web3.min.js"></script>
+</head>
+
+   <body>
+    
+    <a href="http://localhost:3000/logout">Logout</a>
+    
+
+    <form name="home" action="http://localhost:3000/book_details" method="post">
+    <!--<input type="text" name="msg" id="msg" size="40"><br>
+   
+    <input type="submit" id="submit" value="Submit">-->
+
+    BookName:<input type="text" name="bookname" id="bookname"><br>
+    Genre:
+    <select name="genre" id="genre">
+        <option id="action" name="action" value="action">Action</option>
+        <option id="fiction" name="fiction" value="fiction">Fiction</option>
+        <option id="inspirational" name="inspirational" value="inspirational">Inspirational</option>
+        <option id="horror" name="horror" value="horror">Horror</option>
+        <option id="thriller" name="thriller" value="thriller">Thriller</option>
+    </select>
+    
+    <input type="submit" id="submit" value="Submit">
+    </form>
+
+  </body>
+
+</html>

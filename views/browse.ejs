@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<h1>select one book</h1>
+
+
+<table><tr> <th>Bookname</th><th>Select</th></tr>
+<form name="browsing" action="http://localhost:3000/continue_browsing" method="post">
+<%
+
+       
+            
+            var result=JSON.parse(bname);
+        for(var i = 0; i < result.length; i++) {
+            var user=result[i];%>
+            <tr><td><%= user.bookname%></td><td><input type="radio" name="bookid" value="<%= user.bookid%>"></td></tr>
+
+   <%      
+   			console.log(user.bookid);
+		}
+           
+        
+   %>
+   <input type="submit">
+</form>
+</table>
+ 
+</body>
+</html>

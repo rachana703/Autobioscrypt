@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p id="jsondata"><%=name%></p>   
+	<p id="demo"></p>
+
+<script type="text/javascript">
+	var name1=document.getElementById('jsondata');
+	var obj = JSON.parse(name1);
+
+
+        txt += "<table border='1'>"
+        for (var x in obj) {
+            txt += "<tr><td>" + obj[x].bookname + "</td><td><input type="text" name = "txt"></td></tr>";
+        }
+        txt += "</table>"        
+        document.getElementById("demo").innerHTML = txt;
+</script>
+	 
+	
+	 
+
+
+	 
+</body>
+</html>

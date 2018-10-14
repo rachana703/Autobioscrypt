@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<h1>Continue with any one of these Chapters</h1>
+
+
+<table><tr> <th>Chaptername</th><th>Select</th></tr>
+  
+  
+<form name="continue_page" action="http://localhost:3000/page_show" method="post">
+<%
+
+       
+            
+            var result=JSON.parse(pagename);
+        for(var i = 0; i < result.length; i++) {
+            var book=result[i];%>
+            <tr><td>Page no: <%= book.page_no%></td><td><input type="radio" name="pageid" value="<%=book.pageid%>"></td></tr>
+
+   <%      
+   			console.log(book.pageid);
+		}
+           
+        
+   %>
+   <input type="submit" value="View pages">
+</form>
+
+</table>
+ 
+</body>
+</html>

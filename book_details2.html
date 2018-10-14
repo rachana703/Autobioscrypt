@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Site</title>
+<script src="./node_modules/web3/dist/web3.min.js"></script>
+</head>
+
+   <body>
+    
+    <a href="http://localhost:3000/logout">Logout</a>
+    <form name="home" action="http://localhost:3000/book_details2" method="post">
+    
+
+    <input type="submit" id="submit" value="Continue book">
+    </form>
+
+     <form name="home2" action="http://localhost:3000/link_to_book_details" method="post">
+        <input type="submit" id="submit" value="New book">
+    </form>
+
+    <form name="browse" action="http://localhost:3000/browse" method="post">
+        <input type="submit" value="Browse books">
+    </form>
+    
+
+  </body>
+
+  <script type="text/javascript">
+      
+
+
+
+      getSelectedRow = function(val)
+    {
+        db.transaction(function(transaction) {
+              transaction.executeSql('SELECT * FROM Employ where number = ?;',[parseInt(val)], selectedRowValues, errorHandler);
+
+        });
+    };
+    selectedRowValues = function(transaction,results)
+    {
+         for(var i = 0; i < results.rows.length; i++)
+         {
+             var row = results.rows.item(i);
+             alert(row['number']);
+             alert(row['name']);                 
+         }
+    };
+  </script>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<h1>Continue with any one of these Chapters</h1>
+
+
+<table><tr> <th>Chaptername</th><th>Select</th></tr>
+  
+  
+<form name="continue_chapter" action="http://localhost:3000/continue_browsing_page" method="post">
+<%
+
+       
+            
+            var result=JSON.parse(chpname);
+        for(var i = 0; i < result.length; i++) {
+            var book=result[i];%>
+            <tr><td><%= book.chaptername%></td><td><input type="radio" name="chapterid" value="<%book.chapterid%>"></td></tr>
+
+   <%      
+   			console.log(book.chapterid);
+		}
+           
+        
+   %>
+   <input type="submit" value="View pages">
+</form>
+
+</table>
+ 
+</body>
+</html>

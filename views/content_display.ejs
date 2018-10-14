@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<h1>Page display</h1>
+
+
+<%
+    var result=JSON.parse(pagename);
+        for(var i = 0; i < result.length; i++) {
+            var book=result[i];%>
+             <h3><%= book.pagecontent%></h3>
+
+   <%      
+   			console.log(book.pageid);
+		}
+           
+        
+   %>
+   
+
+
+ 
+</body>
+</html>
