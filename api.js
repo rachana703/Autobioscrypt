@@ -59,7 +59,7 @@ app.post('/login',function(req,res){
 
   var AutobioContract = web3.eth.contract(JSON.parse('[ { "constant": false, "inputs": [ { "name": "_content", "type": "string" }, { "name": "_userid", "type": "string" } ], "name": "setInstructor", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getInstructor", "outputs": [ { "name": "", "type": "string" } ], "payable": false, "stateMutability": "view", "type": "function" } ]'));
 
-  Autobio = AutobioContract.at('0x399014358a08270496ddb5e6189a2a788e93d1e3');
+  Autobio = AutobioContract.at('0x7c83f5a36ad9d1ffc78498b29f91d00616afddf1');
 
   
 
