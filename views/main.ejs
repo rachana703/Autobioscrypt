@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Continue Book</title>
+  <script src="./node_modules/web3/dist/web3.min.js"></script>
+
+    <style> 
+    img {
+        
+        position: fixed;
+        size: cover;
+        z-index: -1;
+        opacity: 0.8;
+        width: 100%;
+        height: 100%;
+                
+    }
+
+    </style>
+    <!--cookie font-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <!--materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
+      <link rel = "stylesheet"
+         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+             
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+      </script> 
 </head>
 <body>
+<img src="views/3.jpg"></img>
+        <div class = "col s12 m12 l12">
+            <nav style="position: fixed;">
+               <div class = "nav-wrapper #880e4f pink darken-3">
+                  <p class = "brand-logo left" style="font-family: Cookie; font-size: 50px;"> &nbsp;&nbsp;Autobioscrypt</p>
+                  <ul id = "nav-mobile" class = "right hide-on-med-and-down">
+                     <li><a href = "http://localhost:3000/logout">Logout</a></li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+<center>
+  <br><br><br><br>
+ <h1 style="font-family: Cookie; font-size: 50px;"> Select a Book</h1>
 
-<h1>select one book</h1>
+<form name="continue_book" action="http://localhost:3000/continue_book_chapter_dets" method="post"> 
+  
+<table class="centered #dcedc8 light-green lighten-4" style="width: 700px;"><tr style="font-size: 50px; font-family: Cookie;"><th align="center">Bookname</th><th align="center">Select</th></tr>
 
-
-<table><tr> <th>Bookname</th><th>Select</th></tr>
-<form name="continue_book" action="http://localhost:3000/continue_book_chapter_dets" method="post">
 <%
 
        
@@ -17,7 +60,14 @@
             var result=JSON.parse(bname);
         for(var i = 0; i < result.length; i++) {
             var user=result[i];%>
-            <tr><td><%= user.bookname%></td><td><input type="radio" name="bookid" value="<%= user.bookid%>"></td></tr>
+            <tr><td><b><%= user.bookname%></b></td><td><label>
+        <input class="with-gap" name="bookid" type="radio" value="<%= user.bookid%>"/>
+        <span></span>
+      </label></td></tr>
+
+
+
+            
 
    <%      
    			console.log(user.bookid);
@@ -25,9 +75,14 @@
            
         
    %>
-   <input type="submit">
-</form>
+
+  <!-- <input type="submit">-->
+
 </table>
- 
+<br>
+
+   <button class="btn waves-effect waves-light #ffd180 orange accent-1" style="color: black;" type="submit" id="submit">Continue with selected book</button>
+</form>
+ </center>
 </body>
 </html>
