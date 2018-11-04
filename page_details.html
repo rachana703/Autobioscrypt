@@ -31,6 +31,22 @@
              
       <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
       </script> 
+
+
+        <!--editor-->
+        <!-- include libraries(jQuery, bootstrap) -->
+          <!-- include libraries(jQuery, bootstrap) -->
+      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+      <!-- include summernote css/js -->
+      <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
+
+
+
 </head>
 
    <body>
@@ -53,8 +69,8 @@
    
     <input type="submit" id="submit" value="Submit">-->
 
-    <div class="form-group" style="width: 500px;">
-          <textarea rows="10" cols="50" id="content" class="form-control" placeholder="Page Content" name="content"></textarea>
+    <div class="form-group" style="width: 1300px;">
+          <textarea rows="50" cols="50" id="summernote" class="form-control" placeholder="Page Content" name="content"></textarea>
             
     </div>
 
@@ -66,6 +82,23 @@
 
 </form>
 </center>
+ <script>
+    $(document).ready(function() {
+      
+          $('#summernote').summernote({
+              height: 300,                 // set editor height
+              minHeight: null,             // set minimum height of editor
+              maxHeight: null,             // set maximum height of editor
+              focus: true                  // set focus to editable area after initializing summernote
+        });
+
+
+    });
+  
+  </script>
+
+
+
 </body>
 
 </html>
