@@ -5,22 +5,33 @@
 </head>
 <body>
 
-<h1>Page display</h1>
+
 
 
 <%
     var result=JSON.parse(pagename);
+    var finalresult="";
         for(var i = 0; i < result.length; i++) {
-            var book=result[i];%>
-             <h3><%= book.pagecontent%></h3>
+            var book=result[i];
+            finalresult+=book.pagecontent
+            %>
+             
 
    <%      
    			console.log(book.pageid);
+
 		}
+           console.log(finalresult);
            
+			
+
+
+
         
    %>
-   
+
+
+   <%-finalresult%>
 
 
  

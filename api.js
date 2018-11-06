@@ -61,7 +61,7 @@ app.post('/login',function(req,res){
 
   var AutobioContract = web3.eth.contract(JSON.parse('[ { "constant": false, "inputs": [ { "name": "_content", "type": "string" }, { "name": "_userid", "type": "string" } ], "name": "setInstructor", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getInstructor", "outputs": [ { "name": "", "type": "string" } ], "payable": false, "stateMutability": "view", "type": "function" } ]'));
 
-  Autobio = AutobioContract.at('0x2f2794145fbb51dc96f7dd678ed1cfe26b2ffc9c');
+  Autobio = AutobioContract.at('0x04ef71837b4eeefcdb63b26dc11e340f62c9aae9');
 
   
 
@@ -132,17 +132,16 @@ app.post('/login',function(req,res){
 	            
 	      }
 	      else{
-	        res.send({
-	          "code":204,
-	          "success":"Username or password does not match"
-	            });
+	        res.sendfile("index2.html");
 	      }
 	  }
 	  else{
-	      res.send({
+	      /*res.send({
 	        "code":204,
-	        "success":"Username does not exits"
-	          });
+	        "success":"Username or password does not match"
+	          });*/
+
+	          res.sendfile("index2.html");
 	    }
     }
 
@@ -151,6 +150,105 @@ app.post('/login',function(req,res){
 
   });
 });
+
+
+app.post('/loginagain',function(req,res){
+
+  username=req.body.username;
+  var password=req.body.password;
+  sess.username=username;
+ 
+
+  
+
+
+ //database 
+  
+  console.log("From html page\n username = "+username+"\n pass:"+password);
+  console.log(sess.username);
+
+  //connection.query('INSERT INTO messages (message) VALUES (?)',message);
+
+  connection.query('SELECT * FROM user_detail where username=?',[username],
+   function(err, results,fields){
+    if(err){
+    	console.log(err);
+
+    	res.send({
+	      "code":400,
+	      "failed":"error ocurred"
+	    })
+    }
+    else
+    {
+    	 if(results.length >0){
+	      if(results[0].password == password){
+	       /* res.send({
+	          "code":200,
+	          "success":"login sucessfull"
+	            });*/
+	            userid=results[0].id;
+	            sess.userid=userid;
+	            connection.query('SELECT COUNT(userid) AS id_count FROM book_details where userid=?',[userid],
+		            function(error,results,fields){
+	  				if (error) {
+	  					
+					    console.log("error ocurred",error);
+					    res.send({
+					      "code":400,
+					      "failed":"error ocurred"
+					    })
+	  				}
+	  				else{
+	  					var count_id=results[0].id_count;
+	  					if(count_id>0)
+	  					{
+	  						
+	  						connection.query('SELECT bookname FROM book_details where userid=?',[userid],
+		            			function(error,results,fields){
+		            				console.log(results);
+		            			});
+	  							res.sendfile("book_details2.html");
+	  					}
+	  					else
+	  					{
+	  						
+	  						res.sendfile("book_details.html");
+	  					}
+
+	  					
+	  				}
+  				});
+
+
+
+	     
+
+
+	            
+	      }
+	      else{
+	        res.sendfile("index2.html");
+	      }
+	  }
+	  else{
+	      /*res.send({
+	        "code":204,
+	        "success":"Username or password does not match"
+	          });*/
+
+	          res.sendfile("index2.html");
+	    }
+    }
+
+    //res.render('messages', {messages : recordset});
+    //res.send(results);
+
+  });
+});
+
+
+
 
 app.post('/browse',function(req,res){
 		connection.query('Select bookname,bookid from book_details ',
@@ -174,6 +272,27 @@ app.post('/browse',function(req,res){
 
 });
 
+app.get('/browse',function(req,res){
+		connection.query('Select bookname,bookid from book_details ',
+  			function(error, results, fields) {
+				  if (error) {
+				    console.log("error ocurred",error);
+				    res.send({
+				      "code":400,
+				      "failed":"error ocurred"
+				    })
+ 				 }
+ 				 else
+ 				 {
+ 				 			var name = JSON.stringify(results);
+					  		res.render(__dirname+'/views/browse',{bname:name});
+
+ 				 }
+
+ 			});
+
+
+});
 
 app.post('/continue_browsing',function(req,res){
 	 bookid=req.body.bookid;
@@ -285,6 +404,9 @@ app.post('/link_to_book_details',function(req,res){
 	res.sendfile("book_details.html");
 });
 
+app.get('/link_to_book_details',function(req,res){
+	res.sendfile("book_details.html");
+});
 
 app.post('/book_details',function(req,res){
 

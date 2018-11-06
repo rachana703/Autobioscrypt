@@ -37,24 +37,25 @@
 </head>
 
    <body>
-        <img src="views/3.jpg"></img>
+       <img src="views/1.jpg"></img>
          <div class = "col s12 m12 l12">
             <nav>
                <div class = "nav-wrapper #880e4f pink darken-3">
                   <p class = "brand-logo left" style="font-family: Cookie; font-size: 50px;"> &nbsp;&nbsp;Autobioscrypt</p>
                   <ul id = "nav-mobile" class = "right hide-on-med-and-down">
+                    <li><a href = "http://localhost:3000/link_to_book_details">Start new Book</a></li>
+                    <li> <a href="http://localhost:3000/browse">Browse Books</a></li>
                      <li><a href = "http://localhost:3000/logout">Logout</a></li>
-                  </ul>
                </div>
             </nav>
          </div>
-
-    <center><br>
+    <center>
+        <br><br><br><br><br><br><br><br><br>
      <h1 style="font-family: Cookie; font-size: 50px;"> Share your story</h1>
     <form name="home" action="http://localhost:3000/book_details" method="post" >
         
         <div class="form-group" style="width: 500px">
-          <input type="text" class="form-control" placeholder = "Book Name" id="bookname" name="bookname">
+          <input type="text" class="form-control" placeholder = "Book Name" id="bookname" name="bookname" pattern="^[A-Za-z0-9]*[A-Za-z0-9][A-Za-z0-9 _]*" required>
             <br>
         
        <!-- <label for="genre" style="color: black; font-size: 16px; text-align: right;">Genre:</label>-->
